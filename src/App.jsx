@@ -1,11 +1,14 @@
 
-import './App.css'
+import LoginPage from './Components/login/login'
+import Tools from './Components/tools/tools'
 
 function App() {
-
+const user = localStorage.getItem('legitimate')
   return (
     <>
-     Boilerplate
+    {user === 'anonymous' ?
+    <Tools /> : 
+     <LoginPage />}
     </>
   )
 }

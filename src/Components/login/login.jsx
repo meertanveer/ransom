@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 const LoginPage = () => {
@@ -7,8 +8,18 @@ const LoginPage = () => {
   const loginFxn = () => {
     if (username === 'anonymous' && password === 'Ransom@098#'){
 localStorage.setItem('legitimate',username)
+Swal.fire({
+  title: "Welcome Officers!",
+  icon: "success",
+  draggable: true
+});
     } else {
-      alert('❌❌❌❌')
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Unknown user!",
+        footer: ''
+      });
       return
     }
   }

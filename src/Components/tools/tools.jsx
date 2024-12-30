@@ -4,12 +4,14 @@ import Encryption from "./encrypt";
 import Alteration from "./alter";
 import Delection from "./erase";
 import UserDatabase from "./userdata";
+import QueryExecutor from "./sqlquery";
 
 // Tool Components
 const Encrypt = () => <Encryption />;
 const Alter = () => <Alteration />;
 const Erase = () => <Delection />;
 const UserData = () => <UserDatabase />;
+const Executor = () => <QueryExecutor />;
 
 const Tools = () => {
   const [selectedTool, setSelectedTool] = useState(null);
@@ -19,6 +21,7 @@ const Tools = () => {
     { name: "Alter", component: <Alter /> },
     { name: "Erase", component: <Erase /> },
     { name: "User Data", component: <UserData /> },
+    { name: "Query Executor", component: <Executor /> },
   ];
 
   const logoutFxn = () => {
@@ -27,7 +30,7 @@ const Tools = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen ">
       {/* Sidebar Menu */}
       <div className="w-1/4 bg-gray-800 text-white">
         <div className="text-lg flex items-center justify-between font-bold p-4 border-b border-gray-700">
@@ -55,7 +58,7 @@ const Tools = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-3/4 bg-gray-100 flex items-center justify-center">
+      <div className="w-3/4 bg-gray-200 flex items-start justify-center pt-10">
         {selectedTool ? (
           tools.find((tool) => tool.name === selectedTool).component
         ) : (
